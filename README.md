@@ -33,7 +33,7 @@ APC — Android payload creator
     ```
 4. Change to apc directory
     ```
-    cd tux
+    cd apc
     ```
     
 5. Change the access mode
