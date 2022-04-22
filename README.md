@@ -61,6 +61,12 @@ APC — Android payload creator
 
 * [**Termux**](https://termux.com)
 
+## Changelog
+April 22, 2022
+* [ADD] Main menu options
+* [ADD] Listing to payload option
+* [ADD] Update repo option
+
 ## Disclaimer
 
 :warning: We are not responsible for any misuse or damage caused by this program. use this tool at your own risk!
