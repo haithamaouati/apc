@@ -14,6 +14,7 @@ APC — Android payload creator
 - [Usage](#usage)
 - [Features](#features)
 - [Environments](#environments)
+- [Changelog](#changelog)
 - [Disclaimer](#disclaimer)
 - [Author](#author)
 - [License](#license)
