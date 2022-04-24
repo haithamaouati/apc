@@ -75,7 +75,7 @@ April 22, 2022
 
 ## Author
 
-Made with **bugs** by [**Haitham Aouati**](https://twitter.com/haithamaouati)
+Made with **bugs** by [**Haitham Aouati**](https://t.me/haithamaouati)
 
 ([Table of Contents](#table-of-contents))
 
